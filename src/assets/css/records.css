@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Roboto&display=swap');
+@import '../../index.css';
+
+main>h2 {
+    margin-top: 40px;
+    font-size: 30px;
+}
+
+.seta {
+    padding: 8px;
+    box-shadow: 2px -2px 0 1px #000 inset;
+    border: solid transparent;
+    border-width: 0 0 2px 2px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.card-records {
+    border: 1px solid #DEE2E6;
+    border-radius: 4px;
+    width: 1235px;
+    height: 265px;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.card-position {
+    margin-left: 65px;
+}
+
+.card-name {
+    color: #152536;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.card-description {
+    margin-top: 20px;
+    color: #6C757D;
+}
+
+.card-email {
+    font-size: 13px;
+    margin-top: 10px;
+    font-weight: bolder;
+}
+
+.btn-position {
+    margin-top: 30px;
+    display: inline-flex;
+}
+
+.edit-btn {
+    font-family: 'Inter';
+    width: 80px;
+    height: 40px;
+    background-color: #FFC107;
+    border-radius: 4px;
+    color: #FFFFFF;
+    border: 1px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.delete-btn {
+    font-family: 'Inter';
+    width: 80px;
+    margin-left: 20px;
+    background-color: #DC3545;
+    border-radius: 4px;
+    color: #FFFFFF;
+    border: 1px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    color: black;
+}
+
+/* modal */
+.fundo_escurecido_modal, .fundo_escurecido{
+    background: rgba(0, 0, 0, 0.75);
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.background_hide {
+    display: none;
+}

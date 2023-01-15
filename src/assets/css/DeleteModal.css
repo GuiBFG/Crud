@@ -1,0 +1,59 @@
+@import "../../index.css";
+
+.DeleteModal {
+    width: 700px;
+    height: 350px;
+    background: #fff;
+    justify-content: center;
+    position: absolute;
+    top: 135px;
+    z-index: 10;
+    align-items: center;
+}
+
+.delete-records h1 {
+    font-size: 40px;
+}
+
+.position-btn-modal {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.btn-close-modal {
+    width: 200px;
+    height: 50px;
+    background-color: #FFC107;
+    font-size: 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.btn-close-modal:hover {
+    color: #000000;
+}
+
+.btn-delete {
+    width: 200px;
+    height: 50px;
+    background-color: red;
+    font-size: 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    color: black;
+}
+
+.show {
+    display: flex;
+}
+
+.hide {
+    display: none;
+}

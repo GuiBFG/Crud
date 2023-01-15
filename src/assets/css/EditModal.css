@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Roboto&display=swap');
+@import '../../index.css';
+
+.EditModal {
+    width: 900px;
+    height: 450px;
+    background: #fff;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 135px;
+    z-index: 10;
+}
+
+.position-delete-modal {
+    width: 900px;
+    height: 10px;
+    background: #101010;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 30px 20px 20px;
+}
+
+.delete-modal {
+    background: transparent;
+    border-radius: 10px;
+    color: #FFFFFF;
+    border: none;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.card-txt h1 {
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.input-modal {
+    height: 50px;
+    font-size: 20px;
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.position-save-modal {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.btn-save-modal {
+    width: 120px;
+    height: 50px;
+    background-color: #8458FF;
+    font-size: 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-save-modal:hover {
+    color: #000000;
+}
+
+.warning {
+    color: red;
+}
+
+.show {
+    display: flex;
+}
+
+.hide {
+    display: none;
+}
