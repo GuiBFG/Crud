@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=Roboto&display=swap');
 @import '../../index.css';
 
 main>h2 {
@@ -80,7 +79,7 @@ main>h2 {
 }
 
 /* modal */
-.fundo_escurecido_modal, .fundo_escurecido{
+.fundo_escurecido_modal, .fundo_escurecido {
     background: rgba(0, 0, 0, 0.75);
     right: 0;
     left: 0;

@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=Roboto&display=swap');
 @import '../../index.css';
 
-.EditModal {
+.modal-edit {
     width: 900px;
     height: 450px;
     background: #fff;

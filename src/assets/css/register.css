@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=Roboto&display=swap');
 @import '../../index.css';
 
 main {
@@ -44,6 +43,7 @@ section input, textarea {
     border-radius: 4px;
     border: 1px solid #CED4DA;
     font-size: 16px;
+    font-family: 'Inter';
 }
 
 textarea {
@@ -57,7 +57,6 @@ textarea {
 textarea::placeholder, .input-name::placeholder, .input-email::placeholder {
     font-size: 16px;
     color: #ABB5BE;
-    font-family: 'Inter';
 }
 
 /* Classes */

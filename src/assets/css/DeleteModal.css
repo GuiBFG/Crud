@@ -1,6 +1,6 @@
 @import "../../index.css";
 
-.DeleteModal {
+.modal-delete {
     width: 700px;
     height: 350px;
     background: #fff;

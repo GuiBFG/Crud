@@ -1,0 +1,22 @@
+{
+  "singleQuote": true,
+  "trailingComma": "all",
+  "printWidth": 80,
+  "semi": true,
+  "jsxSingleQuote": true,
+  "jsxBracketSameLine": false,
+  "overrides": [
+    {
+      "files": "*.md",
+      "options": {
+        "parser": "markdown"
+      }
+    },
+    {
+      "files": "*.feature",
+      "options": {
+        "parser": "cucumber"
+      }
+    }
+  ]
+}
