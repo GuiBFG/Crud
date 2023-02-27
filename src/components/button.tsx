@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Button = props => {
+export const button = (props: any) => {
   return (
     <>
       <button className={props.class} onClick={props.action}>
@@ -10,4 +10,4 @@ const Button = props => {
   );
 };
 
-export default Button;
+export default button;

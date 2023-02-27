@@ -1,12 +1,5 @@
 @import '../../index.css';
 
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Inter';
-}
-
 header {
     padding: 10px;
     background-color: #F8F9FA;
@@ -18,11 +11,10 @@ header {
 header h1 {
     font-size: 24px;
     color: #152536;
+    font-weight: bold;
 }
 
 header nav a {
-    text-decoration: none;
-    font-size: 16px;
     color: #152536;
     margin-right: 10px;
 }
@@ -39,44 +31,48 @@ section h2 {
     margin-bottom: 15px;
 }
 
-section input, textarea {
-    border-radius: 4px;
-    border: 1px solid #CED4DA;
-    font-size: 16px;
-    font-family: 'Inter';
-}
-
 textarea {
-    border-color: #CED4DA;
     width: 555px;
     height: 145px;
     resize: none;
-    padding: 16px 0px 0px 20px;
+
 }
 
-textarea::placeholder, .input-name::placeholder, .input-email::placeholder {
+textarea::placeholder, input::placeholder {
     font-size: 16px;
     color: #ABB5BE;
+    padding: 0px 15px;
 }
 
-/* Classes */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Inter';
+}
 
 .nav-registro {
     display: flex;
     align-items: center;
 }
 
-.container {
+.register-form {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     margin-right: 40px;
 }
 
+.register-form input, textarea {
+    border-radius: 4px;
+    border: 1px solid #CED4DA;
+    font-size: 16px;
+    font-family: 'Inter';
+}
+
 .input-name {
     width: 590px;
     height: 35px;
-    padding: 0px 15px;
 }
 
 .div-email {
@@ -86,7 +82,6 @@ textarea::placeholder, .input-name::placeholder, .input-email::placeholder {
 .input-email {
     width: 295px;
     height: 35px;
-    padding: 0px 10px;
 }
 
 .div-description {
@@ -107,4 +102,12 @@ textarea::placeholder, .input-name::placeholder, .input-email::placeholder {
 
 .btn-register:hover {
     color: black;
+}
+
+.show {
+    display: flex;
+}
+
+.hide {
+    display: none;
 }

@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { Api } from '../../api/api';
 import '../../assets/css/EditModal.css';
-import Botao from '../botao';
+import Button from '../button';
+import { ModalProps } from '../interfaces/IModalProps';
 
-const EditModal = (props) => {
+export const editModal: FunctionComponent<ModalProps> = ({
+  isModalOpen,
+  isModalClose,
+  id,
+}) => {
   const [userName, setUserName] = useState('');
   const [descricao, setDescricao] = useState('');
   const [email, setEmail] = useState('');
@@ -11,7 +16,7 @@ const EditModal = (props) => {
 
   const isInputFilled = userName !== '' && email !== '' && descricao !== '';
 
-  const onSave = (id) => {
+  const onSave = (id: number) => {
     try {
       Api.put(`email/${id}`, {
         nome: userName,
@@ -23,53 +28,42 @@ const EditModal = (props) => {
     }
   };
 
-  const onSubmit = (id) => {
+  const onSubmit = (id: number) => {
     isInputFilled ? onSave(id) : setWarningErrorInput(true);
   };
 
-  useEffect(() => {
-    if (props.item !== undefined) {
-      setUserName(props.item.nome);
-      setEmail(props.item.email);
-      setDescricao(props.item.descricao);
-    }
-  }, [props.item]);
-
   return (
-    <main>
-      <div className={'modal-edit ' + props.mostrar}>
-        <div className='position-delete-modal'>
-          <Botao class={'delete-modal'} action={props.funcaoEdit}>
+    <div className='posisiton-modal-edit'>
+      <div className={'modal-edit ' + isModalOpen}>
+        <div className='position-close-modal'>
+          <Button class={'close-modal'} action={isModalClose}>
             X
-          </Botao>
+          </Button>
         </div>
-
         <div className='card-txt'>
           <h1>Modificar Registros</h1>
-
-          <div>
+          <div className='position-input-modal-edit'>
             <input
               type='text'
               placeholder='Nome completo'
-              className='input-modal'
+              className='input-modal-edit'
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
             />
             <input
               type='text'
               placeholder='Descrição'
-              className='input-modal'
+              className='input-modal-edit'
               value={descricao}
               onChange={(e) => setDescricao(e.target.value)}
             />
             <input
               type='text'
               placeholder='Email'
-              className='input-modal'
+              className='input-modal-edit'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-
             {warningErrorInput && (
               <p>
                 <span className='warning'>*</span>Coloque um campo válido nos
@@ -78,14 +72,14 @@ const EditModal = (props) => {
             )}
           </div>
           <div className='position-save-modal'>
-            <Botao class={'btn-save-modal'} action={() => onSubmit(props.id)}>
+            <Button class={'btn-save-modal'} action={() => onSubmit(id)}>
               Salvar
-            </Botao>
+            </Button>
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 
-export default EditModal;
+export default editModal;

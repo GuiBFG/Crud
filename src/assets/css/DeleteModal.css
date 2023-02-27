@@ -30,6 +30,7 @@
     border: none;
     cursor: pointer;
     margin-right: 20px;
+    border-radius: 4px;
 }
 
 .btn-close-modal:hover {
@@ -44,16 +45,9 @@
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 4px;
 }
 
 .btn-delete:hover {
     color: black;
-}
-
-.show {
-    display: flex;
-}
-
-.hide {
-    display: none;
 }

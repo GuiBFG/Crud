@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Api } from '../api/api';
 import EditModal from '../components/modal/EditModal';
 import DeleteModal from '../components/modal/DeleteModal';
-import Botao from '../components/botao';
+import Button from '../components/button';
 
 export const Records = () => {
   const [getEmail, setGetEmail] = useState([]);
@@ -17,37 +17,35 @@ export const Records = () => {
     navigate('/');
   };
 
-  const listarAPI = () => {
+  const getUSer = () => {
     Api.get('email').then((result) => {
       setGetEmail(result.data);
     });
   };
 
-  const isModalEditOpen = (estadoAtual: string, id: number) => {
-    if (estadoAtual === 'hide') {
+  const isModalEditOpen = (isOpen: string, id: number) => {
+    if (isOpen === 'hide') {
       setModalEdit('show');
     } else {
       setModalEdit('hide');
     }
-
     setGetId(id);
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
   };
 
-  const isModalDeleteOpen = (estadoAtual: string, id: number) => {
-    if (estadoAtual === 'hide') {
+  const isModalDeleteOpen = (isOpen: string, id: number) => {
+    if (isOpen === 'hide') {
       setModalDelete('show');
     } else {
       setModalDelete('hide');
     }
-
     setGetId(id);
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
   };
 
   useEffect(() => {
-    listarAPI();
-  }, []);
+    getUSer();
+  }, [modalEdit, modalDelete]);
 
   return (
     <>
@@ -56,48 +54,50 @@ export const Records = () => {
           <h1>SyncTur</h1>
         </div>
         <div>
-          <div className='seta' onClick={() => backButton()}></div>
+          <div className='seta' onClick={backButton}></div>
         </div>
       </header>
       <main>
-        <h2>Registros</h2>
-        <EditModal
-          mostrar={modalEdit}
-          funcaoEdit={isModalEditOpen}
-          id={getId}
-        />
-        <DeleteModal
-          mostrarDelete={modalDelete}
-          funcaoDelete={isModalDeleteOpen}
-          id={getId}
-        />
-        {getEmail.map((item: any) => {
-          return (
-            <div className='card-records' key={item.id}>
-              <div className='card-position'>
-                <p className='card-name'>{item.nome}</p>
-                <p className='card-description'>{item.descricao}</p>
-                <p className='card-email'>Email: {item.email}</p>
-                <div className='btn-position'>
-                  <Botao
-                    class={'edit-btn'}
-                    action={() => isModalEditOpen(modalEdit, item.id)}
-                  >
-                    Editar
-                  </Botao>
-                  <Botao
-                    class={'delete-btn'}
-                    action={() => isModalDeleteOpen(modalDelete, item.id)}
-                  >
-                    Excluir
-                  </Botao>
+        <div className='container'>
+          <h2>Registros</h2>
+          <EditModal
+            isModalOpen={modalEdit}
+            isModalClose={isModalEditOpen}
+            id={getId}
+          />
+          <DeleteModal
+            isModalOpen={modalDelete}
+            isModalClose={isModalDeleteOpen}
+            id={getId}
+          />
+          {getEmail.map((item: any) => {
+            return (
+              <div className='card-records' key={item.id}>
+                <div className='card-position'>
+                  <p className='card-name'>{item.nome}</p>
+                  <p className='card-description'>{item.descricao}</p>
+                  <p className='card-email'>Email: {item.email}</p>
+                  <div className='btn-position'>
+                    <Button
+                      class={'edit-btn'}
+                      action={() => isModalEditOpen(modalEdit, item.id)}
+                    >
+                      Editar
+                    </Button>
+                    <Button
+                      class={'delete-btn'}
+                      action={() => isModalDeleteOpen(modalDelete, item.id)}
+                    >
+                      Excluir
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
-        <div className={'fundo_escurecido ' + modalEdit}></div>
-        <div className={'fundo_escurecido ' + modalDelete}></div>
+            );
+          })}
+          <div className={'fundo_escurecido ' + modalEdit}></div>
+          <div className={'fundo_escurecido ' + modalDelete}></div>
+        </div>
       </main>
     </>
   );

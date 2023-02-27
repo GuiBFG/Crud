@@ -1,6 +1,6 @@
 @import '../../index.css';
 
-main>h2 {
+.container>h2 {
     margin-top: 40px;
     font-size: 30px;
 }

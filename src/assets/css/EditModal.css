@@ -1,5 +1,12 @@
 @import '../../index.css';
 
+.posisiton-modal-edit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Inter';
+}
+
 .modal-edit {
     width: 900px;
     height: 450px;
@@ -11,7 +18,7 @@
     z-index: 10;
 }
 
-.position-delete-modal {
+.position-close-modal {
     width: 900px;
     height: 10px;
     background: #101010;
@@ -21,7 +28,7 @@
     padding: 20px 30px 20px 20px;
 }
 
-.delete-modal {
+.close-modal {
     background: transparent;
     border-radius: 10px;
     color: #FFFFFF;
@@ -36,12 +43,18 @@
     justify-content: center;
 }
 
-.input-modal {
+.position-input-modal-edit {
+    display: flex;
+}
+
+.input-modal-edit {
     height: 50px;
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 50px;
     margin-left: 20px;
     margin-right: 20px;
+    border: 1px solid #CED4DA;
+    border-radius: 4px;
 }
 
 .position-save-modal {
@@ -58,6 +71,7 @@
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 4px;
 }
 
 .btn-save-modal:hover {
@@ -66,12 +80,4 @@
 
 .warning {
     color: red;
-}
-
-.show {
-    display: flex;
-}
-
-.hide {
-    display: none;
 }

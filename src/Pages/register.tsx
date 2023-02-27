@@ -1,45 +1,50 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Api } from '../api/api';
-import Botao from '../components/botao';
+import Button from '../components/button';
 import '../assets/css/register.css';
 import { messageErrors } from '../utils/messageErrors';
 
-const Register = () => {
+export const Register = () => {
   const [, setGetEmail] = useState([]);
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userDescricao, setUserDescricao] = useState('');
   const navigate = useNavigate();
-  const { validateInputError } = messageErrors();
 
   const verifyIfFieldsAreWritten =
     userName !== '' && userEmail !== '' && userDescricao !== '';
 
-  const listAPI = () => {
-    Api.get('email').then(result => {
+  const getUser = () => {
+    void Api.get('email').then((result) => {
       setGetEmail(result.data);
     });
   };
 
   const registerNewUser = () => {
+    void Api.post('email', {
+      nome: userName,
+      email: userEmail,
+      descricao: userDescricao,
+    }).then(() => {
+      navigate('/records');
+    });
+  };
+
+  const onSave = () => {
     try {
-      Api.post('email', {
-        nome: userName,
-        email: userEmail,
-        descricao: userDescricao,
-      }).then(() => navigate('/records'));
+      registerNewUser();
     } catch (err) {
       console.log(err);
     }
   };
 
-  const registration = () => {
-    verifyIfFieldsAreWritten ? registerNewUser() : validateInputError();
+  const onSubmit = () => {
+    verifyIfFieldsAreWritten ? onSave() : messageErrors();
   };
 
   useEffect(() => {
-    listAPI();
+    getUser();
   }, []);
 
   return (
@@ -50,51 +55,59 @@ const Register = () => {
         </div>
         <div className='nav-registro'>
           <nav>
-            <a href='records'>Registro</a>
+            <Link to='/records'>Registro</Link>
           </nav>
         </div>
       </header>
       <main>
-        <section>
-          <div className='container'>
-            <div>
-              <h2>Nome Completo</h2>
-              <input
-                className='input-name'
-                type='text'
-                placeholder='Digite seu nome completo'
-                maxLength={48}
-                value={userName}
-                onChange={e => setUserName(e.target.value)}
-              />
+        <div className='container'>
+          <section>
+            <div className='register-form'>
+              <div>
+                <h2>Nome Completo</h2>
+                <input
+                  className='input-name'
+                  type='text'
+                  placeholder='Digite seu nome completo'
+                  maxLength={48}
+                  value={userName}
+                  onChange={(e) => {
+                    setUserName(e.target.value);
+                  }}
+                />
+              </div>
+              <div className='div-email'>
+                <h2>Email</h2>
+                <input
+                  className='input-email'
+                  type='text'
+                  placeholder='Digite seu Email'
+                  value={userEmail}
+                  onChange={(e) => {
+                    setUserEmail(e.target.value);
+                  }}
+                />
+              </div>
             </div>
-            <div className='div-email'>
-              <h2>Email</h2>
-              <input
-                className='input-email'
-                type='text'
-                placeholder='Digite seu Email'
-                value={userEmail}
-                onChange={e => setUserEmail(e.target.value)}
-              />
+            <div className='div-description'>
+              <h2>Descrição</h2>
+              <textarea
+                name='descrição'
+                id='descricao'
+                maxLength={128}
+                placeholder='Escreva aqui a sua mensagem'
+                value={userDescricao}
+                onChange={(e) => {
+                  setUserDescricao(e.target.value);
+                }}
+              ></textarea>
             </div>
+          </section>
+          <div>
+            <Button class={'btn-register'} action={onSubmit}>
+              Cadastrar
+            </Button>
           </div>
-          <div className='div-description'>
-            <h2>Descrição</h2>
-            <textarea
-              name='descrição'
-              id='descricao'
-              maxLength={128}
-              placeholder='Escreva aqui a sua mensagem'
-              value={userDescricao}
-              onChange={e => setUserDescricao(e.target.value)}
-            ></textarea>
-          </div>
-        </section>
-        <div>
-          <Botao class={'btn-register'} action={() => registration()}>
-            Cadastrar
-          </Botao>
         </div>
       </main>
     </>
